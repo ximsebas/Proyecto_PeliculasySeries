@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - Buscador Películas y Series</title>
-    <link rel="stylesheet" href="sources/styles/style.css" />
+    <link rel="stylesheet" href="sources/styles/style.css"/>
   </head>
   <body class="login-body">
     <div class="login-container">
@@ -24,49 +24,9 @@
       <div id="message"></div>
     </div>
 
-    <script>
-      document
-        .getElementById("loginForm")
-        .addEventListener("submit", async function (e) {
-          e.preventDefault();
 
-          const email = document.getElementById("email").value;
-          const password = document.getElementById("password").value;
-
-          // Mostrar mensaje de carga
-          document.getElementById("message").innerHTML =
-            '<p style="color: blue;">Verificando credenciales...</p>';
-
-          try {
-            const response = await fetch("controllers/login.php", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-              },
-              body: `email=${encodeURIComponent(
-                email
-              )}&password=${encodeURIComponent(password)}`,
-            });
-
-            const result = await response.json();
-
-            if (result.success) {
-              document.getElementById("message").innerHTML =
-                '<p style="color: green;">¡Login exitoso! Redirigiendo...</p>';
-              setTimeout(() => {
-                window.location.href = "dashboard.html";
-              }, 1500);
-            } else {
-              document.getElementById(
-                "message"
-              ).innerHTML = `<p style="color: red;">Error: ${result.message}</p>`;
-            }
-          } catch (error) {
-            document.getElementById("message").innerHTML =
-              '<p style="color: red;">Error de conexión</p>';
-            console.error("Error:", error);
-          }
-        });
-    </script>
+    <script src="sources/lib/jquery/jquery.js"></script>
+    <script src="sources/scripts/login.js" type="module"></script>
+    
   </body>
 </html>
