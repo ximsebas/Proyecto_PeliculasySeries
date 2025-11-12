@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard - Buscador Películas y Series</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="sources/styles/style.css" />
   </head>
   <body>
     <div class="dashboard-container">
@@ -161,7 +161,7 @@
       // Verificar si el usuario está logueado
       async function checkSession() {
         try {
-          const response = await fetch("./php/check_session.php");
+          const response = await fetch("controllers/check_session.php");
           const result = await response.json();
 
           if (!result.logged_in) {
@@ -211,7 +211,7 @@
         }
 
         try {
-          const response = await fetch("./php/add_favorite.php", {
+          const response = await fetch("controllers/add_favorite.php", {
             method: "POST",
             headers: {
               "Content-Type": "application/x-www-form-urlencoded",

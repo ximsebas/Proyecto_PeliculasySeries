@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mis Favoritos - Buscador Películas y Series</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="sources/styles/style.css" />
   </head>
   <body>
     <div class="dashboard-container">
@@ -64,7 +64,7 @@
         favoritesContainer.innerHTML = "";
 
         try {
-          const response = await fetch("./php/get_favorites.php");
+          const response = await fetch("controllers/get_favorites.php");
           const result = await response.json();
 
           loading.style.display = "none";
@@ -131,7 +131,7 @@
         }
 
         try {
-          const response = await fetch("./php/remove_favorite.php", {
+          const response = await fetch("controllers/remove_favorite.php", {
             method: "POST",
             headers: {
               "Content-Type": "application/x-www-form-urlencoded",
